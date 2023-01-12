@@ -11,4 +11,9 @@ class PagesController extends AppController
     {
 
     }
+
+    public function latest_articles()
+    {
+
+    }
 }
