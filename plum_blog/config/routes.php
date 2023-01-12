@@ -23,6 +23,7 @@
 
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
+use Cake\Routing\Router;
 
 return static function (RouteBuilder $routes) {
     /*
@@ -65,6 +66,13 @@ return static function (RouteBuilder $routes) {
          * You can remove these routes once you've connected the
          * routes you want in your application.
          */
+        $builder->fallbacks();
+    });
+
+    $routes->prefix('admin', function (RouteBuilder $builder) {
+
+        $builder->connect('/', ['controller' => 'Panel', 'action' => 'index']);
+
         $builder->fallbacks();
     });
 
