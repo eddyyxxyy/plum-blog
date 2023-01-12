@@ -88,7 +88,7 @@ return [
      * enable timestamping regardless of debug value.
      */
     'Asset' => [
-        //'timestamp' => true,
+        'timestamp' => env('DEBUG'),
         // 'cacheTime' => '+1 year'
     ],
 
@@ -230,14 +230,14 @@ return [
              * The keys host, port, timeout, username, password, client and tls
              * are used in SMTP transports
              */
-            'host' => 'localhost',
+            'host' => env('DB_URL'),
             'port' => 25,
             'timeout' => 30,
             /*
              * It is recommended to set these options through your environment or app_local.php
              */
-            //'username' => null,
-            //'password' => null,
+            'username' => env('DB_USER'),
+            'password' => env('DB_PASS'),
             'client' => null,
             'tls' => false,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
