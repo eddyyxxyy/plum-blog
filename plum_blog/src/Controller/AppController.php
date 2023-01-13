@@ -56,7 +56,8 @@ class AppController extends Controller
     {
         parent::beforeRender($event);
 
-        if ($this->request->getParam('prefix') == 'admin') {
+        if ($this->request->getParam('prefix') == 'Admin')
+        {
             $this->viewBuilder()->setLayout('admin');
         }
     }
