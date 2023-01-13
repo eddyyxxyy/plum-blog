@@ -22,6 +22,7 @@
                 <?= $this->element('layout/side_menu') ?>
             </div>
             <div class="col-md-9">
+                <?= $this->Flash->render() ?>
                 <?= $this->fetch('content') ?>
                 <?= $this->element('layout/footer') ?>
             </div>
