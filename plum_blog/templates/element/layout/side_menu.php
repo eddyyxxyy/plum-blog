@@ -1,9 +1,20 @@
 <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active">
-        Cras justo odio
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-    <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+    <?= $this->Html->link(
+        'Home',
+        ['controller' => 'Panel', 'action' => 'index'],
+        [
+            'class' => $this->request->getParam('controller') == 'Panel'
+            ? 'list-group-item list-group-item-action active'
+            : 'list-group-item list-group-item-action'
+            ]
+    ) ?>
+    <?= $this->Html->link(
+        'User',
+        ['controller' => 'Users', 'action' => 'index'],
+        [
+            'class' => $this->request->getParam('controller') == 'Users'
+            ? 'list-group-item list-group-item-action active'
+            : 'list-group-item list-group-item-action'
+            ]
+    ) ?>
 </div>
