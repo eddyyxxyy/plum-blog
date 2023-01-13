@@ -230,14 +230,15 @@ return [
              * The keys host, port, timeout, username, password, client and tls
              * are used in SMTP transports
              */
-            'host' => env('DB_URL'),
+            'host' => 'localhost',
             'port' => 25,
             'timeout' => 30,
             /*
              * It is recommended to set these options through your environment or app_local.php
              */
-            'username' => env('DB_USER'),
-            'password' => env('DB_PASS'),
+            'username' => 'eddyxide',
+            'password' => '123!leandoer',
+            'database' => 'plum_blog',
             'client' => null,
             'tls' => false,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
