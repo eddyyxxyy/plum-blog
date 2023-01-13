@@ -29,6 +29,7 @@
     </div>
 
     <?= $this->Html->script([
+        'jquery-slim.min',
         'popper.min',
         'bootstrap.min',
     ]) ?>
