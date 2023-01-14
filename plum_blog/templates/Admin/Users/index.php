@@ -29,6 +29,9 @@
         <tr>
             <td><?= $user->id ?></td>
             <td>
+                <?php if ($user->image) : ?>
+                <img src="/<?= $user->image ?>" alt="" height="50">
+                <?php endif ?>
                 <?= $this->Html->link(
                 "$user->first_name $user->last_name",
                 ['action' => 'edit', $user->id]
