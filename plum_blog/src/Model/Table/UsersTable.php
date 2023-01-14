@@ -11,6 +11,10 @@ class UsersTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Upload', [
+            'field' => 'file',
+            'folder' => 'upload/profile',
+        ]);
         $this->addBehavior('Timestamp');
     }
 
@@ -29,11 +33,7 @@ class UsersTable extends Table
             ->email('email', true, 'Your e-mail is invalid')
             ->minLength('password', 6, 'Passwords should be at least 6 characters long')
 
-            ->allowEmptyFile('image')
-            ->uploadedFile('image', [
-                'types' => ['image/jpeg', 'image/png'],
-                'maxSize' => 2000000
-            ]);
+            ->allowEmptyFile('image');
 
 
         return $validator;
