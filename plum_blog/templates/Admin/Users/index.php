@@ -12,9 +12,15 @@
 <table class="table">
     <thead>
         <tr>
-            <th width="40">#</th>
-            <th>Name</th>
-            <th width="170">Modified</th>
+            <th width="40">
+                <?= $this->Paginator->sort('id', '#') ?>
+            </th>
+            <th>
+                <?= $this->Paginator->sort( 'Name') ?>
+            </th>
+            <th width="180">
+                <?= $this->Paginator->sort('Modified') ?>
+            </th>
             <th width="40"></th>
         </tr>
     </thead>
@@ -24,7 +30,7 @@
             <td><?= $user->id ?></td>
             <td>
                 <?= $this->Html->link(
-                $user->first_name . ' ' . $user->last_name,
+                "$user->first_name $user->last_name",
                 ['action' => 'edit', $user->id]
                 ) ?>
             </td>
@@ -42,3 +48,15 @@
         <?php endforeach ?>
     </tbody>
 </table>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <?php
+    echo $this->Paginator->first('<< First');
+    echo $this->Paginator->prev('< Previous');
+    echo $this->Paginator->numbers();
+    echo $this->Paginator->next('Next >');
+    echo $this->Paginator->last('Last >>');
+    ?>
+  </ul>
+</nav>
