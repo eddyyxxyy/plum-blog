@@ -7,19 +7,21 @@ use App\Controller\AppController;
 
 class UsersController extends AppController
 {
+    public $paginate = [
+        'limit' => 5,
+    ];
+
     public function index(): void
     {
-        $users = $this->Users->find('all')
-        ->order(['first_name']);
+        $users = $this->Users->find('all');
 
-        $this->set('users', $users);
+        $this->set('users', $this->paginate($users));
     }
 
     public function add()
     {
-        $user = $this->Users->newEmptyEntity();
-
         if ($this->request->is('post')) {
+            $user = $this->Users->newEmptyEntity();
             $user = $this->Users->patchEntity($user, $this->request->getData());
 
             if ($this->Users->save($user)) {
@@ -31,14 +33,14 @@ class UsersController extends AppController
             //$this->Flash->error('There was an error, please check the form');
         }
 
-        $this->set('user', $user);
+        // $this->set('user', $user);
     }
 
     public function edit($id)
     {
         $user = $this->Users->get($id);
 
-        if ($this->request->is('put')) {
+        if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
 
             if ($this->Users->save($user)) {
