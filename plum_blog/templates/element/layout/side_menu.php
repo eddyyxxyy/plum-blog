@@ -17,4 +17,13 @@
             : 'list-group-item list-group-item-action'
             ]
     ) ?>
+    <?= $this->Html->link(
+        'Categories',
+        ['controller' => 'Categories', 'action' => 'index'],
+        [
+            'class' => $this->request->getParam('controller') == 'Categories'
+            ? 'list-group-item list-group-item-action active'
+            : 'list-group-item list-group-item-action'
+            ]
+    ) ?>
 </div>
