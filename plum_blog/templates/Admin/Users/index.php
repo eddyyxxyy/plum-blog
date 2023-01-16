@@ -9,6 +9,19 @@
     </div>
 </h1>
 
+<hr>
+
+<?= $this->Form->create(null, ['type' => 'get']) ?>
+<div class="row">
+    <div class="col-md-3">
+        <?= $this->Form->control('find', ['label' => false, 'placeholder' => $this->request->getQuery('find')]) ?>
+    </div>
+    <div class="col-md-3">
+        <?= $this->Form->button('Find') ?>
+    </div>
+</div>
+<?= $this->Form->end() ?>
+
 <table class="table">
     <thead>
         <tr>
@@ -16,10 +29,10 @@
                 <?= $this->Paginator->sort('id', '#') ?>
             </th>
             <th>
-                <?= $this->Paginator->sort( 'Name') ?>
+                <?= $this->Paginator->sort( 'first_name', 'Name') ?>
             </th>
             <th width="180">
-                <?= $this->Paginator->sort('Modified') ?>
+                <?= $this->Paginator->sort('modified', 'Modified') ?>
             </th>
             <th width="40"></th>
         </tr>
@@ -29,8 +42,8 @@
         <tr>
             <td><?= $user->id ?></td>
             <td>
-                <?php if ($user->image) : ?>
-                <img src="/<?= $user->image ?>" alt="" height="50">
+                <?php if ($this->Html->link('../files/Users/image/' . str_replace('\\', '/', $user->photo_dir) . '/' . $user->image)) : ?>
+                    <?= $this->Html->image('../files/Users/image/' . str_replace('\\', '/', $user->photo_dir) . '/' . $user->image, ['height' => 50, 'width' => 50]) ?>
                 <?php endif ?>
                 <?= $this->Html->link(
                 "$user->first_name $user->last_name",
