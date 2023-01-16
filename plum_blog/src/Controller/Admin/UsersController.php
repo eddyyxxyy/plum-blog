@@ -15,6 +15,11 @@ class UsersController extends AppController
     {
         $users = $this->Users->find('all');
 
+        if ($this->request->getQuery('find')) {
+            $this->paginate['conditions']['or']['first_name like'] = "%{$this->request->getQuery('find')}%";
+            $this->paginate['conditions']['or']['last_name like'] = "%{$this->request->getQuery('find')}%";
+        }
+
         $this->set('users', $this->paginate($users));
     }
 
