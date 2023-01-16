@@ -26,4 +26,13 @@
             : 'list-group-item list-group-item-action'
             ]
     ) ?>
+    <?= $this->Html->link(
+        'Posts',
+        ['controller' => 'Posts', 'action' => 'index'],
+        [
+            'class' => $this->request->getParam('controller') == 'Posts'
+            ? 'list-group-item list-group-item-action active'
+            : 'list-group-item list-group-item-action'
+            ]
+    ) ?>
 </div>
