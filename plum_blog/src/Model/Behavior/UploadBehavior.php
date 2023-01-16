@@ -3,10 +3,10 @@
 namespace App\Model\Behavior;
 
 use ArrayObject;
+use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
 use Cake\Filesystem\Folder;
 use Cake\Filesystem\File;
-use Cake\Utility\Inflector;
 use Cake\ORM\Behavior;
 use Cake\Utility\Text;
 
@@ -51,5 +51,11 @@ class UploadBehavior extends Behavior
         $file->close();
 
         $data[$config['field']] = DS . $config['folder'] . DS . $name;
+    }
+
+    public function afterDelete(Event $event, EntityInterface $entity, ArrayObject $options)
+    {
+        debug($entity);
+        die;
     }
 }
