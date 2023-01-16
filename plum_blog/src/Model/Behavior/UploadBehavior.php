@@ -37,20 +37,20 @@ class UploadBehavior extends Behavior
                         $folder->chmod($dirAbsolute, 0755, true);
                     }
                 }
+                $extension = explode('.', $data[$config['field']]['name']);
+                $extension = $extension[1];
+
+                $name = time() . '-' . Text::slug(str_replace(".{$extension}", '', $data[$config['field']]['name'])) . "{$extension}";
+
+                $file = new File($dirAbsolute . DS . $name, false, 0644);
+                $file->create();
+                $file->write(file_get_contents($data[$config['field']]['tmp_name']));
+                $file->close();
+
+                $data[$config['field']] = DS . $config['folder'] . DS . $name;
             }
         }
 
-        $extension = explode('.', $data[$config['field']]['name']);
-        $extension = $extension[1];
-
-        $name = time() . '-' . Text::slug(str_replace(".{$extension}", '', $data[$config['field']]['name'])) . "{$extension}";
-
-        $file = new File($dirAbsolute . DS . $name, false, 0644);
-        $file->create();
-        $file->write(file_get_contents($data[$config['field']]['tmp_name']));
-        $file->close();
-
-        $data[$config['field']] = DS . $config['folder'] . DS . $name;
     }
 
     public function afterDelete(Event $event, EntityInterface $entity, ArrayObject $options)
