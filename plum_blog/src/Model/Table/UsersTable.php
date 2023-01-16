@@ -41,7 +41,7 @@ class UsersTable extends Table
                     $tmp = tempnam(sys_get_temp_dir(), 'upload') . '.' . $extension;
 
                     // Use the Imagine library to DO THE THING
-                    $size = new \Imagine\Image\Box(40, 40);
+                    $size = new \Imagine\Image\Box(50, 50);
                     $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
                     $imagine = new \Imagine\Gd\Imagine();
 
