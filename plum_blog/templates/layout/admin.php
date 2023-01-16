@@ -33,6 +33,8 @@
         'jquery-slim.min',
         'popper.min',
         'bootstrap.min',
+        'ckeditor/ckeditor',
+        'admin',
     ]) ?>
 </body>
 
