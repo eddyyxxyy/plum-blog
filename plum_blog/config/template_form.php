@@ -50,7 +50,7 @@ return [
     // Option group element used in select pickers.
     'optgroup' => '<optgroup label="{{label}}"{{attrs}}>{{content}}</optgroup>',
     // Select element,
-    'select' => '<select name="{{name}}"{{attrs}}>{{content}}</select>',
+    'select' => '<div class="form-group"> <select class="custom-select" name="{{name}}"{{attrs}}>{{content}}</select> </div>',
     // Multi-select element,
     'selectMultiple' => '<select name="{{name}}[]" multiple="multiple"{{attrs}}>{{content}}</select>',
     // Radio input element,
@@ -58,7 +58,7 @@ return [
     // Wrapping container for radio input/label,
     'radioWrapper' => '{{label}}',
     // Textarea input element,
-    'textarea' => '<textarea name="{{name}}"{{attrs}}>{{value}}</textarea>',
+    'textarea' => '<div class="form-group"> <textarea class="form-control" name="{{name}}"{{attrs}}>{{value}}</textarea> </div>',
     // Container for submit buttons.
     'submitContainer' => '<div class="submit">{{content}}</div>',
     // Confirm javascript template for postLink()
