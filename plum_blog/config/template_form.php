@@ -2,7 +2,7 @@
 
 return [
     // Used for button elements in button().
-    'button' => '<button{{attrs}} class="btn btn-primary mt-3">{{text}}</button>',
+    'button' => '<button{{attrs}} class="btn btn-primary">{{text}}</button>',
     // Used for checkboxes in checkbox() and multiCheckbox().
     'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}>',
     // Input group wrapper for checkboxes created via control().
