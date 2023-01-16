@@ -29,7 +29,7 @@
                 <?= $this->Paginator->sort('id', '#') ?>
             </th>
             <th>
-                <?= $this->Paginator->sort( 'first_name', 'Name') ?>
+                <?= $this->Paginator->sort( 'name', 'Name') ?>
             </th>
             <th width="180">
                 <?= $this->Paginator->sort('modified', 'Modified') ?>
