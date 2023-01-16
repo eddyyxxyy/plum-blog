@@ -97,3 +97,7 @@ yarn-error.log
 # Ignore all local history of files
 .history
 .ionide
+
+# Image folder
+
+plum_blog/webroot/files
