@@ -16,6 +16,7 @@ class CategoriesTable extends Table
         $this->setTable('categories');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+        $this->hasMany('Posts');
 
         $this->addBehavior('Slug');
         $this->addBehavior('Timestamp');
