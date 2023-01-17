@@ -1,3 +1,7 @@
+<?php
+$this->assign('title', 'Welcome to my blog!')
+?>
+
 <?php foreach ($posts as $post) : ?>
 <div class="row">
     <div class="col-md-12">

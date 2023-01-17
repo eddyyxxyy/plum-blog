@@ -1,3 +1,8 @@
+<?php
+$this->assign('title', $post->title);
+$this->assign('description', $post->description)
+?>
+
 <h1>
     <?= $post->title ?>
 </h1>
