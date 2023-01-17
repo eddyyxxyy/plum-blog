@@ -34,13 +34,16 @@
             </div>
         </div>
     </nav>
+    <?= $this->cell('Categories')->render('menu') ?>
 
     <div class="container p-5">
         <div class="row">
             <div class="col-md-8">
                 <?= $this->fetch('content') ?>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <?= $this->cell('Categories') ?>
+            </div>
         </div>
     </div>
 
