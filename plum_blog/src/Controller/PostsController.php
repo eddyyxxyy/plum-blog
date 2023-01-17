@@ -8,7 +8,7 @@ use App\Controller\AppController;
 class PostsController extends AppController
 {
     public $paginate = [
-        'limit' => 2,
+        'order' => ['Posts.modified' => 'desc'],
     ];
 
     public function index()
