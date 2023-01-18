@@ -6,6 +6,7 @@ use Cake\Database\Driver\Mysql;
 use Cake\Error\ExceptionRenderer;
 use Cake\Log\Engine\FileLog;
 use Cake\Mailer\Transport\MailTransport;
+use Cake\Mailer\Transport\SmtpTransport;
 
 return [
     /*
@@ -226,19 +227,22 @@ return [
     'EmailTransport' => [
         'default' => [
             'className' => MailTransport::class,
-            /*
-             * The keys host, port, timeout, username, password, client and tls
-             * are used in SMTP transports
-             */
             'host' => 'localhost',
             'port' => 25,
             'timeout' => 30,
-            /*
-             * It is recommended to set these options through your environment or app_local.php
-             */
-            'username' => 'eddyxide',
-            'password' => '123!leandoer',
-            'database' => 'plum_blog',
+            'username' => null,
+            'password' => null,
+            'client' => null,
+            'tls' => false,
+            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
+        ],
+        'smtp' => [
+            'className' => SmtpTransport::class,
+            'host' => 'smtp.gmail.com',
+            'port' => 587,
+            'timeout' => 30,
+            'username' => 'edson.cake.teste@gmail.com',
+            'password' => null,
             'client' => null,
             'tls' => false,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
