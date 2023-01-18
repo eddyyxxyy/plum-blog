@@ -52,6 +52,7 @@ return static function (RouteBuilder $routes) {
          * to use (in this case, templates/Pages/home.php)...
          */
         $builder->connect('/', ['controller' => 'Posts', 'action' => 'index']);
+        $builder->connect('/about-us', ['controller' => 'Pages', 'action' => 'aboutUs']);
         $builder->connect('/{category}', ['controller' => 'Categories', 'action' => 'view']);
         $builder->connect('/{category}/{post}', ['controller' => 'Posts', 'action' => 'view']);
 
