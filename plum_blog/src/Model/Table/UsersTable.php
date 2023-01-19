@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -101,5 +102,15 @@ class UsersTable extends Table
 
 
         return $validator;
+    }
+
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->isUnique(['email']), 'uniqueEmail', [
+            'errorField' => 'email',
+            'message' => 'There is already an user with that e-mail.',
+        ]);
+
+        return $rules;
     }
 }
