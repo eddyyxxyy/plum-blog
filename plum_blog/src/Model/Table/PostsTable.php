@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -91,5 +92,15 @@ class PostsTable extends Table
             ->notEmptyString('slug', 'This field must be filled in');
 
         return $validator;
+    }
+
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn('categoria_id', 'Categories'), [
+            'errorField' => 'categoria_id',
+            'message' => 'This category doesn\'t exist.',
+        ]);
+
+        return $rules;
     }
 }
