@@ -4,7 +4,7 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-
+use App\Event\Newsletter;
 
 class NewslettersTable extends Table
 {
@@ -17,6 +17,8 @@ class NewslettersTable extends Table
         $this->setDisplayField('email');
 
         $this->addBehavior('Timestamp');
+
+        $this->getEventManager()->on(new Newsletter());
     }
 
     public function validationDefault(Validator $validator): Validator
