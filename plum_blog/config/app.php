@@ -241,10 +241,10 @@ return [
             'host' => 'smtp.gmail.com',
             'port' => 587,
             'timeout' => 30,
-            'username' => 'edson.cake.teste@gmail.com',
-            'password' => null,
+            'username' => 'edson.test.cake@gmail.com',
+            'password' => '123leandoer',
             'client' => null,
-            'tls' => false,
+            'tls' => true,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ],
     ],
@@ -260,8 +260,8 @@ return [
      */
     'Email' => [
         'default' => [
-            'transport' => 'default',
-            'from' => 'you@localhost',
+            'transport' => 'smtp',
+            'from' => ['edson.test.cake@gmail.com' => 'CakePHP Lecture'],
             /*
              * Will by default be set to config value of App.encoding, if that exists otherwise to UTF-8.
              */
