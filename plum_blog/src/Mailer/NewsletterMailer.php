@@ -12,7 +12,6 @@ class NewsletterMailer extends Mailer
         return $this
             ->setEmailFormat('html')
             ->setTo($entity->email)
-            ->setFrom('edson.test.cake@gmail.com')
             ->setSubject('Welcome to our newsletter!')
             ->setViewVars([
                 'entity' => $entity,
