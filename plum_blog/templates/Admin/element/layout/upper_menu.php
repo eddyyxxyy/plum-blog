@@ -16,7 +16,11 @@
                         <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="#">Change password</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <?= $this->Html->link(
+                            'Logout',
+                            ['controller' => 'Users', 'action' => 'logout'],
+                            ['class' => 'dropdown-item']
+                        ); ?>
                     </div>
                 </li>
             </ul>
