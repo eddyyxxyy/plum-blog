@@ -3,13 +3,23 @@
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
-
+use Cake\Event\EventInterface;
 
 class UsersController extends AppController
 {
     public $paginate = [
         'limit' => 5,
     ];
+
+    public function beforeRender(EventInterface $event)
+    {
+        parent::beforeRender($event);
+
+        if ($this->request->getParam('action') == 'login')
+        {
+            $this->viewBuilder()->setLayout('login');
+        }
+    }
 
     public function index(): void
     {
@@ -72,5 +82,25 @@ class UsersController extends AppController
         }
 
         return $this->redirect($this->referer());
+    }
+
+    public function login()
+    {
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+
+            if ($user) {
+                $this->Auth->setUser($user);
+
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+
+            $this->Flash->error(__('Incorrect username or password.'));
+        }
+    }
+
+    public function logout()
+    {
+        return $this->redirect($this->Auth->logout());
     }
 }
