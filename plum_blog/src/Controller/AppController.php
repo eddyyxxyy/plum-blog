@@ -44,12 +44,55 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'authenticate' => [
+                'Form' => [
+                    'userModel' => 'Users',
+                    'fields' => ['username' => 'email', 'password' => 'password'],
+                ]
+            ],
+            'loginAction' => [
+                'prefix' => 'Admin',
+                'controller' => 'Users',
+                'action' => 'login',
+            ],
+            'loginRedirect' => [
+                'prefix' => 'Admin',
+                'controller' => 'Panel',
+                'action' => 'index',
+            ],
+            'logoutRedirect' => [
+                'prefix' => 'Admin',
+                'controller' => 'Users',
+                'action' => 'login',
+            ],
+            'unauthorizedRedirect' => [
+                'prefix' => 'Admin',
+                'controller' => 'Users',
+                'action' => 'login',
+            ],
+            'authorize' => 'Controller',
+            'flash' => ['element' => 'error'],
+            'authError' => 'You need permission to execute this action.'
+        ]);
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.
          * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
          */
         //$this->loadComponent('FormProtection');
+    }
+
+    public function isAuthorized($user)
+    {
+        return true;
+    }
+
+    public function beforeFilter(EventInterface $event)
+    {
+        if (!$this->request->getParam('prefix')) {
+            $this->Auth->allow();
+        }
     }
 
     public function beforeRender(EventInterface $event)
