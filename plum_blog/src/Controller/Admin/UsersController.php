@@ -103,4 +103,42 @@ class UsersController extends AppController
     {
         return $this->redirect($this->Auth->logout());
     }
+
+    public function profile()
+    {
+        $user = $this->Users->get($this->Auth->user('id'));
+
+        if ($this->request->is(['put', 'post'])) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Your profile was updated!'));
+
+                return $this->redirect($this->referer());
+            }
+
+            $this->Flash->error(__('Error! Your profile wasn\'t updated!'));
+        }
+
+        $this->set('user', $user);
+    }
+
+    public function password()
+    {
+        $user = $this->Users->get($this->Auth->user('id'));
+
+        if ($this->request->is(['put', 'post'])) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Your password was updated!'));
+
+                return $this->redirect($this->referer());
+            }
+
+            $this->Flash->error(__('Error! Your password wasn\'t updated!'));
+        }
+
+        $this->set('user', $user);
+    }
 }
