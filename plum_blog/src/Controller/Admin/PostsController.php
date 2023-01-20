@@ -47,6 +47,7 @@ class PostsController extends AppController
         $post = $this->Posts->get($id);
 
         if ($this->request->is(['post', 'put'])) {
+            $this->request->getData()['user_id'] = $this->Auth->user('id');
 
             $post = $this->Posts->patchEntity($post, $this->request->getData());
 
